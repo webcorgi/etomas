@@ -1,0 +1,88 @@
+@font-face {
+ font-family: 'Cafe24Ohsquare';
+ font-weight: 400;
+ src: url(../fonts/Cafe24Ohsquare.woff) format('woff'),
+      url(../fonts/Cafe24Ohsquare.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cafe24OhsquareAir';
+  font-weight: 400;
+  src: url(../fonts/Cafe24OhsquareAir-v2.0.woff) format('woff'),
+       url(../fonts/Cafe24OhsquareAir-v2.0.ttf) format('truetype');
+ }
+
+/* 프리텐다드 폰트 패밀리 전체 woff2로 추가 */
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../fonts/Pretendard-Thin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/Pretendard-ExtraLight.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/Pretendard-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Pretendard-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/Pretendard-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/Pretendard-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/Pretendard-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../fonts/Pretendard-ExtraBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/Pretendard-Black.woff2') format('woff2');
+}
+
+body * {
+	font-family: 'Cafe24Ohsquare', sans-serif;
+	font-weight:400;
+}
+
+/* *************************** COMMON *************************** */
+
+/* 여백 */
+.h5 {height:5px; padding:0; margin:0; clear:both;}
+.h10 {height:10px; padding:0; margin:0; clear:both;}
+.h20 {height:20px; padding:0; margin:0; clear:both;}
+.h30 {height:30px; padding:0; margin:0; clear:both;}
+.h40 {height:40px; padding:0; margin:0; clear:both;}
+.h50 {height:50px; padding:0; margin:0; clear:both;}
+.h60 {height:60px; padding:0; margin:0; clear:both;}
+.h70 {height:70px; padding:0; margin:0; clear:both;}
+.h80 {height:80px; padding:0; margin:0; clear:both;}
+.h90 {height:90px; padding:0; margin:0; clear:both;}
+.h100 {height:100px; padding:0; margin:0; clear:both;}
