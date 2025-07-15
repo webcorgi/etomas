@@ -20,6 +20,24 @@
     }
 }
 
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+
+@keyframes rotateBg {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 html {
     font-size:16px;
@@ -65,6 +83,9 @@ body {
     font-size: 1.5625rem;
     color: var(--color-main);
     font-weight: 500;
+}
+.event__tab.result {
+    box-shadow: 12px 0 103px rgba(0,0,0,0.45);
 }
 .event__tab {
     display: flex;
@@ -326,6 +347,52 @@ body {
     align-items:flex-end;
     gap:0.9375rem;
 }
+.choise__items .btn-choise-item.active .img-card,
+.choise__items .btn-choise-item:hover .img-card {
+    filter:brightness(1.2);
+}
+
+/* 클릭한 버튼 강조 효과 */
+.choise__items .btn-choise-item.clicked {
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+.choise__items .btn-choise-item.clicked .img-card {
+    filter: brightness(1.3) contrast(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.choise__items .btn-choise-item.clicked .balloon {
+    background: #fff;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: none;
+    transform: scale(1.05);
+}
+
+.choise__items .btn-choise-item.clicked .usertype {
+    background: #007154;
+    box-shadow: 0 4px 15px rgba(0, 113, 84, 0.4);
+    transform: scale(1.05);
+}
+
+.choise__items .btn-choise-item.clicked .usertype.type2 {
+    background: #2940ff;
+    box-shadow: 0 4px 15px rgba(41, 64, 255, 0.4);
+}
+
+/* 클릭되지 않은 버튼들 상대적으로 어둡게 */
+.choise__items.has-clicked .btn-choise-item:not(.clicked) {
+    opacity: 0.6;
+    filter: brightness(0.8);
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+
+.choise__items.has-clicked .btn-choise-item:not(.clicked) .img-card {
+    filter: brightness(0.7) contrast(0.9);
+}
 .choise__items .btn-choise-item .balloon {
     width:calc(100% - 1.875rem);
     left:0.9375rem;
@@ -421,6 +488,43 @@ body {
     grid-column: 5 / 7;
     grid-row: 2;
 }
+
+/* 카드 순차 등장 애니메이션 */
+@keyframes cardSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.choise__items.end .btn-choise-item {
+    opacity: 0;
+    animation: cardSlideIn 0.6s ease-out forwards;
+}
+
+.choise__items.end .btn-choise-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.choise__items.end .btn-choise-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.choise__items.end .btn-choise-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.choise__items.end .btn-choise-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.choise__items.end .btn-choise-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
 .choise__items.loading {
     justify-content:center;
 }
@@ -429,4 +533,325 @@ body {
     max-width:13.4375rem;
     margin:0 auto;
     display:block;
+    animation: rotate 5s linear infinite;
+}
+
+/* 결과 */
+.event__tab.result {
+    text-align:center;
+}
+
+.event__tab button {
+    
+}
+
+.event__tab button.active {
+    
+}
+
+.result__wrap {
+    padding:3.75rem 1.25rem;
+    text-align:center;
+}
+
+.result__wrap.b2c__result {
+    background:url(../img/result_bg.jpg) no-repeat top center;
+    background-size:cover;
+}
+.result__wrap.b2b__result {
+    background:url(../img/result_bg_b2b.jpg) no-repeat top center;
+    background-size:cover;
+}
+
+.result__wrap h2 {
+    color:#fff;
+    text-shadow:0 0.0625rem 1rem rgba(95, 64, 174, 0.5);
+}
+
+.result__wrap .title-top {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.625rem;
+}
+
+.result__wrap .title-top img {
+    width:1.875rem;
+    position:relative;
+    top:-0.1875rem;
+}
+
+.result__wrap .title-top span {
+    font-size:3.125rem;
+}
+
+.result__wrap .title-btm {
+    padding-top:0.3125rem;
+    padding-bottom:1.25rem;
+    font-size:4.0625rem;
+}
+
+.result__wrap p {
+    font-family:var(--font-ohsquareAir);
+    color:#fff;
+    font-size:1.875rem;
+    padding-bottom:3.25rem;
+}
+
+.result__card {
+    margin-bottom:4.0625rem;
+}
+
+.result__card img {
+    width:100%;
+    max-width:18.125rem;
+}
+
+.title-coupon {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:0 0.9375rem;
+}
+
+.title-coupon img {
+    height:0.4375rem;
+}
+
+.title-coupon b {
+    color:#e8e1ff;
+    font-size:2.6875rem;
+}
+
+.result__coupon p {
+    font-size:1.78125rem;
+    color:#e8e1ff;
+}
+
+.coupon-img {
+    width:100%;
+    margin-bottom:2.5rem;
+    padding:0 3.875rem;
+}
+.result__wrap p.text-share {
+    font-size:1.4375rem;
+    padding-bottom:1.5rem;
+}
+.result__sns {
+    display:flex;
+    justify-content:center;
+    gap:0 0.625rem;
+    padding:0 3.125rem;
+}
+
+.result__sns button {
+    width:100%;
+}
+
+.result__sns button img {
+    width:100%;
+}
+
+.warning__wrap {
+    padding:2.1875rem 1.25rem;
+    background:#f1effd;
+}
+.warning__wrap * {
+    font-family:var(--font-pretendard);
+    color:#616161;
+}
+
+.warning__wrap h4 {
+    font-size:1.3125rem;
+    font-weight:500;
+    padding-bottom:0.625rem;
+}
+
+.warning__wrap h4 img {
+    width:1.25rem;
+}
+
+.warning__wrap h4 span {
+    
+}
+
+.warning__wrap ul {
+    padding-left:0.625rem;
+}
+
+.warning__wrap li {
+    list-style:disc;
+    list-style-type: '-';
+    padding-left:0.625rem;
+    padding-bottom:0.3125rem;
+    font-size:1.125rem;
+    letter-spacing:-0.09375rem;
+}
+
+footer {
+    background:#424242;
+    padding:2.1875rem 1.25rem;
+}
+
+footer img {
+    height:1.5625rem;
+    margin-bottom:0.9375rem;
+}
+
+footer p {
+    font-family:var(--font-pretendard);
+    color:#c1c1c1;
+    line-height:1.2;
+}
+footer .copy {
+    color:#5b5b5b;
+    font-size:1.03125rem;
+    font-family:var(--font-pretendard);
+    margin-top:1.25rem;
+}
+
+/* 화면 전환 닦아내기 애니메이션 */
+.page-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+.page-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    will-change: transform;
+}
+
+.page-content.current {
+    transform: translateX(0);
+    z-index: 1;
+}
+
+.page-content.next {
+    transform: translateX(100%);
+    z-index: 2;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+}
+
+.page-content.next.slide-in {
+    transform: translateX(0);
+}
+
+.page-content.current.slide-out {
+    transform: translateX(-100%);
+}
+
+/* 로딩 상태 개선 */
+.loading-transition {
+    pointer-events: none;
+}
+
+.loading-transition .btn-choise-item {
+    pointer-events: none;
+    opacity: 0.8;
+    transform: scale(0.98);
+    transition: all 0.2s ease;
+}
+
+/* 페이지 로딩 중 플레이스홀더 */
+.page-content.next:empty::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+}
+.loading-img{
+    width:100%;
+    position:absolute;
+    top:35%;
+    left:0;
+    animation: rotateBg 30s linear infinite;
+}
+
+@keyframes loading-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes wipeIn {
+    0% { 
+        transform: translateX(100%); 
+    }
+    100% { 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes wipeOut {
+    0% { 
+        transform: translateX(0); 
+    }
+    100% { 
+        transform: translateX(-100%); 
+    }
+}
+
+/* 기존 transition-overlay 제거하고 새로운 방식으로 변경 */
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #007154;
+    z-index: 9999;
+    transform: translateX(100%);
+    display: none;
+}
+
+.transition-overlay.active {
+    display: block;
+}
+
+.wipe-transition {
+    animation: wipeIn 0.8s ease-out forwards;
+}
+
+.wipe-transition.wipe-out {
+    animation: wipeOut 0.4s ease-in forwards;
+}
+
+/* 페이지 전환 시 기존 내용 페이드아웃 */
+.choise__wrap.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.choise__wrap.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+/* 버튼 클릭 시 비활성화 */
+.btn-choise-item:disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 500px) {
+    .page-content {
+        transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
 }

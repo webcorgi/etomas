@@ -20,20 +20,29 @@
 </head>
 
 <body>
-	<div class="event__tab">
-		<button class="active">EVENT 01</button>
-		<button>EVENT 02</button>
-	</div>
-	<div class="choise__wrap">
-		<div class="choise__contents">
-			<h1>당신의 점괘를<br>
-				기다리는 중입니다...</h1>
-
-			<div class="choise__items loading">
-				<button class="btn-choise-item">
-					<img src="../img/card.png" alt="card" class="img-card">
-				</button>
+	<div class="page-container">
+		<div class="page-content current" id="currentPage">
+			<div class="event__tab">
+				<button class="active">EVENT 01</button>
+				<button>EVENT 02</button>
 			</div>
+			<div class="choise__wrap">
+				<div class="choise__contents">
+					<h1>당신의 점괘를<br>
+						기다리는 중입니다...</h1>
+
+					<div class="choise__items loading">
+						<button class="btn-choise-item">
+							<img src="../img/card.png" alt="card" class="img-card">
+						</button>
+					</div>
+				</div>
+				<img src="../img/loading_circle.png" alt="loading" class="loading-img">
+			</div>
+		</div>
+		
+		<div class="page-content next" id="nextPage">
+			<!-- 다음 페이지 콘텐츠가 여기에 로드됩니다 -->
 		</div>
 	</div>
 

@@ -20,38 +20,107 @@
 </head>
 
 <body>
-	<div class="event__tab">
-		<button class="active">EVENT 01</button>
-		<button>EVENT 02</button>
-	</div>
-	<div class="choise__wrap">
-		<div class="choise__contents">
-			<strong>Q1.</strong>
-			<h1>CS가 접수됐다!<br>이럴 때 나는...</h1>
+	<div class="page-container">
+		<div class="page-content current" id="currentPage">
+			<div class="event__tab">
+				<button class="active">EVENT 01</button>
+				<button>EVENT 02</button>
+			</div>
+			<div class="choise__wrap">
+				<div class="choise__contents">
+					<strong>Q1.</strong>
+					<h1>CS가 접수됐다!<br>이럴 때 나는...</h1>
 
-			<div class="choise__items">
-				<button class="btn-choise-item">
-					<div class="balloon type1">
-						<p>시간이 조금 걸려도<br>
-							꼼꼼하게 확인 후<br>
-							완벽하게 CS 응대
-						</p>
+					<div class="choise__items">
+						<button class="btn-choise-item" data-target="seller_q2.html">
+							<div class="balloon type1">
+								<p>시간이 조금 걸려도<br>
+									꼼꼼하게 확인 후<br>
+									완벽하게 CS 응대
+								</p>
+							</div>
+							<img src="../img/card.png" alt="card" class="img-card">
+							
+						</button>
+						<button class="btn-choise-item" data-target="seller_q2.html">
+							<div class="balloon type2">
+								<p>칼답은 신뢰의 상징!<br>
+									무조건 빠른 응대!
+								</p>
+							</div>
+							<img src="../img/card.png" alt="card" class="img-card">
+							
+						</button>
 					</div>
-					<img src="../img/card.png" alt="card" class="img-card">
-					
-				</button>
-				<button class="btn-choise-item">
-					<div class="balloon type2">
-						<p>칼답은 신뢰의 상징!<br>
-							무조건 빠른 응대!
-						</p>
-					</div>
-					<img src="../img/card.png" alt="card" class="img-card">
-					
-				</button>
+				</div>
 			</div>
 		</div>
+		
+		<div class="page-content next" id="nextPage">
+			<!-- 다음 페이지 콘텐츠가 여기에 로드됩니다 -->
+		</div>
 	</div>
+
+	<script>
+		$(document).ready(function() {
+			// 초기 상태 설정: nextPage가 오른쪽에 위치하도록
+			$('#nextPage').addClass('next');
+			
+			// 버튼 클릭 시 페이지 전환 애니메이션
+			$('.btn-choise-item').click(function() {
+				var target = $(this).data('target');
+				
+				if (!target) return;
+				
+				// 클릭한 버튼 강조 효과
+				$(this).addClass('clicked');
+				$('.choise__items').addClass('has-clicked');
+				
+				// 모든 버튼 비활성화
+				$('.btn-choise-item').prop('disabled', true);
+				$(this).closest('.choise__wrap').addClass('loading-transition');
+				
+				// AJAX로 다음 페이지 콘텐츠 가져오기 (애니메이션 전에 먼저 로드)
+				$.get(target)
+					.done(function(data) {
+						// 다음 페이지의 실제 콘텐츠만 추출
+						var $data = $(data);
+						var eventTab = $data.find('.event__tab').prop('outerHTML') || '';
+						var choiseWrap = $data.find('.choise__wrap').prop('outerHTML') || '';
+						var resultWrap = $data.find('.result__wrap').prop('outerHTML') || '';
+						
+						var nextContent = eventTab + choiseWrap + resultWrap;
+						$('#nextPage').html(nextContent);
+						
+						// 콘텐츠 로드 후 즉시 애니메이션 시작
+						setTimeout(function() {
+							$('#nextPage').addClass('slide-in');
+							$('#currentPage').addClass('slide-out');
+						}, 50);
+					})
+					.fail(function() {
+						// 실패 시 로딩 메시지
+						$('#nextPage').html(`
+							<div class="choise__wrap">
+								<div class="choise__contents">
+									<h1>페이지를 불러오는 중...</h1>
+								</div>
+							</div>
+						`);
+						
+						setTimeout(function() {
+							$('#nextPage').addClass('slide-in');
+							$('#currentPage').addClass('slide-out');
+						}, 50);
+					});
+				
+				// 애니메이션 완료 후 실제 페이지로 이동
+				setTimeout(function() {
+					window.location.href = target;
+				}, 900);
+			});
+		});
+	</script>
 
 </body>
 </html>
